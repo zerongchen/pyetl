@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+   <storeconfig>
+     <Warehouse>/user/hive/warehouse/dgmobile.db</Warehouse>
+     <bin>/usr/hive</bin>
+   </storeconfig>
+   <Scanner>
+	  <Interval>30</Interval>
+	  <PostFix>txt,lzo</PostFix>
+   </Scanner>
+   <FileSource>
+	<!-- Flow输出的原始话单文件目录 -->
+	<RootPath>/home/bsmp/dpi/dpi_flow_analys/bill/OrgOrder</RootPath>
+		
+	<!-- Flow输出的Dns清单文件目录 -->
+	<RootPath>/home/bsmp/dpi/dpi_flow_analys/bill/DnsOrg</RootPath>
+		
+	<!-- Flow输出的Radius清单文件目录 -->
+	<RootPath>/home/bsmp/dpi/dpi_flow_analys/bill/RadiusOrg</RootPath>
+		
+	<!-- Flow输出的清单文件目录 -->
+	<RootPath>/home/bsmp/dpi/dpi_flow_analys/bill/UAOrgOrder</RootPath>
+		
+	<!-- Flow输出的关键字文件目录 -->
+	<RootPath>/home/bsmp/dpi/dpi_flow_analys/bill/SEkwdsOrgOrder</RootPath>
+		
+	<!-- Flow输出的手机号码文件目录 -->
+	<RootPath>/home/bsmp/dpi/dpi_flow_analys/bill/LikePhoneOrgOrder</RootPath>
+		
+	<!-- Flow输出的QQ号文件目录 -->
+	<RootPath>/home/bsmp/dpi/dpi_flow_analys/bill/QQAccountOrder</RootPath>
+   </FileSource>
+   <FileTypes>
+    <!-- 原始话单文件hive表配置, lzo压缩 -->
+	<FileInfo prefix="originalbillgroup" subpath="originalbillgroup" hiveTab="hive_originalbill_h" ispart="false" compress="true" refresh="false"/>
+	<FileInfo prefix="originalbillhome" subpath="originalbillhome" hiveTab="hive_originalbill_h" ispart="false" compress="true" refresh="false"/>
+	<FileInfo prefix="originalbillother" subpath="originalbillother" hiveTab="hive_originalbill_h" ispart="false" compress="true" refresh="false"/>
+	
+	<!-- Dns清单hive表配置, 不压缩 -->
+    <FileInfo prefix="dnsbill" subpath="dnsbill" hiveTab="dnsbill" ispart="false" compress="false" refresh="false"/>
+	
+	<!-- Radius清单hive表配置, 不压缩 -->
+	<FileInfo prefix="radiusbill" subpath="radiusbill" hiveTab="radiusbill" ispart="false" compress="false" refresh="false"/>
+	
+	<!-- 手机号码清单hive表配置, 不压缩 -->
+    <FileInfo prefix="phoneoriginalbill" subpath="phoneoriginalbill" hiveTab="phoneoriginalbill" ispart="false" compress="false" refresh="false"/>
+	
+	<!-- UserAgent清单hive表配置, 不压缩 -->
+    <FileInfo prefix="uaoriginalbill" subpath="uaoriginalbill" hiveTab="uaoriginalbill" ispart="false" compress="false" refresh="false"/>
+	
+	<!-- UserAgent清单hive表配置, 不压缩 -->
+    <FileInfo prefix="sekwdsoriginalbill" subpath="sekwdsoriginalbill" hiveTab="sekwdsoriginalbill" ispart="false" compress="false" refresh="false"/>
+	
+	<!-- QQ号清单hive表配置, 不压缩 -->
+    <FileInfo prefix="qqoriginalbill" subpath="qqoriginalbill" hiveTab="qqoriginalbill" ispart="false" compress="false" refresh="false"/>
+ 
+  </FileTypes>
+   <Refresh>
+	<cycle>30</cycle>
+	<hdfspath>/user/hive/warehouse/loadlog.db</hdfspath>
+	<postifx>log</postifx>
+   </Refresh>
+</config>
